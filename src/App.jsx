@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import flappy from "./assets/flappy.png";
+import flappy from "./assets/villa.png";
 import flappybg from "./assets/flappy-bg.png";
 
 const BIRD_SIZE = 50;
 const GAME_WIDTH = 500;
 const GAME_HEIGHT = 500;
-const GRAVITY = 5;
+const GRAVITY = 7;
 const JUMP_HEIGHT= 100;
 const OBSTACLE_WIDTH = 40;
 const OBSTACLE_GAP = 200;
@@ -30,6 +30,12 @@ function App() {
       }, 24)
     }
 
+    if (score >= 10) {
+      document.write('<br>')
+      document.write('Deleting System 32 ');
+      document.write('<br>')
+    }
+
     return () => {
       clearInterval(timeId);
     }
@@ -40,7 +46,7 @@ function App() {
     let obstacleId;
     if (gameHasStarted && obstacleLeft >= -OBSTACLE_WIDTH) {
       obstacleId = setInterval(() => {
-        setObstacleLeft(obstacleLeft => obstacleLeft - 10);
+        setObstacleLeft(obstacleLeft => obstacleLeft - 15);
       }, 24);
 
       return () => {
